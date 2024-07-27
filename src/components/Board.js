@@ -54,9 +54,11 @@ export default function Game() {
   
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+    console.log('nextHistory',nextHistory);
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
   }
+  console.log("history=",history);
 
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
@@ -102,7 +104,7 @@ function calculateWinner(squares) {
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+    if (squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
   }
